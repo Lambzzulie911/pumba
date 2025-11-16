@@ -12,7 +12,11 @@ body {
   -webkit-font-smoothing:antialiased;
 }
 
-/* center everything */
+/* -------------------------
+   MAIN LAYOUT
+   ------------------------- */
+
+/* Default desktop: 2 columns */
 .wrap {
   max-width: 980px;
   margin: 40px auto;
@@ -23,7 +27,26 @@ body {
   align-items: start;
 }
 
-/* card */
+/* 📱 FORCE PHONES/TABLETS TO STACK */
+@media (max-width: 1024px) {
+  .wrap {
+    display: block !important;
+  }
+
+  .card {
+    margin-bottom: 40px;
+  }
+
+  .slideshow {
+    margin: 20px auto 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* -------------------------
+   Card
+   ------------------------- */
 .card {
   background: rgba(255,255,255,0.06);
   border-radius: 14px;
@@ -41,9 +64,14 @@ body {
   text-shadow: 0 0 14px rgba(255,255,255,0.6);
 }
 
-.subtitle { margin: 0 0 18px; color: rgba(255,255,255,0.92); }
+.subtitle { 
+  margin: 0 0 18px; 
+  color: rgba(255,255,255,0.92); 
+}
 
-/* button */
+/* -------------------------
+   Button
+   ------------------------- */
 .btn {
   appearance: none;
   border: none;
@@ -59,7 +87,9 @@ body {
 .btn:active { transform: translateY(1px); }
 .btn:hover { box-shadow: 0 10px 26px rgba(0,150,220,0.32); }
 
-/* secret message block (hidden until click) */
+/* -------------------------
+   Secret message
+   ------------------------- */
 .secret {
   margin-top: 18px;
   padding: 18px;
@@ -74,18 +104,16 @@ body {
     0 0 14px rgba(255,255,255,0.7),
     0 0 22px rgba(255,255,255,0.5);
 }
-
-/* hide */
 .hidden { display: none; }
 
 /* -------------------------
-   Slideshow (right column)
+   Slideshow
    ------------------------- */
 .slideshow {
   width: 100%;
   max-width: 420px;
 
-  /* 🔥 let height adjust — no cropping */
+  /* tall shape so full pics fit */
   aspect-ratio: 3 / 4;
 
   border-radius: 14px;
@@ -97,7 +125,7 @@ body {
   background: rgba(255,255,255,0.05);
 }
 
-/* images: no cropping ever */
+/* images: never crop */
 .slides {
   position: absolute;
   inset: 0;
@@ -112,12 +140,13 @@ body {
   transform: scale(1.03);
   transition: opacity 900ms ease, transform 900ms ease;
 }
+
 .slides.active {
   opacity: 1;
   transform: scale(1);
 }
 
-/* responsive (tablet) */
+/* Responsive special adjustments */
 @media (max-width: 880px) {
   .slideshow {
     max-width: 100%;
@@ -126,7 +155,7 @@ body {
 }
 
 /* -------------------------
-   Canvases (behind content)
+   Background canvases
    ------------------------- */
 #bgCanvas, #fireworks {
   position: fixed;
@@ -137,7 +166,7 @@ body {
   z-index: 1;
 }
 
-/* hearts container */
+/* Hearts */
 #hearts {
   position: fixed;
   inset: 0;
@@ -145,7 +174,6 @@ body {
   z-index: 3;
 }
 
-/* heart style */
 .heart {
   position: absolute;
   width: 26px;
@@ -173,28 +201,4 @@ body {
   0% { transform: translate(-50%, 0) scale(1); opacity: 0; }
   10% { opacity: 1; }
   100% { transform: translate(-50%, -120vh) scale(1.15); opacity: 0; }
-}
-
-
-/* -------------------------------------------------------
-   📱 FORCE SLIDESHOW TO BOTTOM ON ALL PHONES
-   ------------------------------------------------------- */
-@media (max-width: 600px) {
-  .wrap {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-  }
-
-  .card {
-    width: 100% !important;
-    order: 1 !important;
-  }
-
-  .slideshow {
-    width: 100% !important;
-    max-width: 100% !important;
-    order: 2 !important;
-    margin-top: 20px !important;
-  }
 }
