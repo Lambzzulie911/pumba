@@ -59,7 +59,7 @@ body {
 .btn:active { transform: translateY(1px); }
 .btn:hover { box-shadow: 0 10px 26px rgba(0,150,220,0.32); }
 
-/* secret message block */
+/* secret message block (hidden until click) */
 .secret {
   margin-top: 18px;
   padding: 18px;
@@ -79,13 +79,13 @@ body {
 .hidden { display: none; }
 
 /* -------------------------
-   Slideshow
+   Slideshow (right column)
    ------------------------- */
 .slideshow {
   width: 100%;
   max-width: 420px;
 
-  /* 🔥 LET HEIGHT ADJUST TO IMAGES */
+  /* 🔥 let height adjust — no cropping */
   aspect-ratio: 3 / 4;
 
   border-radius: 14px;
@@ -103,6 +103,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
+
   object-fit: contain;
   object-position: center;
   background-color: #0002;
@@ -116,21 +117,9 @@ body {
   transform: scale(1);
 }
 
-/* -------------------------
-   Responsive — stack + move slideshow under card
-   ------------------------- */
+/* responsive (tablet) */
 @media (max-width: 880px) {
-  .wrap {
-    grid-template-columns: 1fr;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card {
-    order: 1;
-  }
   .slideshow {
-    order: 2;
     max-width: 100%;
     aspect-ratio: 3 / 5;
   }
@@ -179,8 +168,33 @@ body {
   border-radius: 50%;
   background: linear-gradient(180deg,#ff77a9,#ff4d7a);
 }
+
 @keyframes heartFloat {
   0% { transform: translate(-50%, 0) scale(1); opacity: 0; }
   10% { opacity: 1; }
   100% { transform: translate(-50%, -120vh) scale(1.15); opacity: 0; }
+}
+
+
+/* -------------------------------------------------------
+   📱 FORCE SLIDESHOW TO BOTTOM ON ALL PHONES
+   ------------------------------------------------------- */
+@media (max-width: 600px) {
+  .wrap {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .card {
+    width: 100% !important;
+    order: 1 !important;
+  }
+
+  .slideshow {
+    width: 100% !important;
+    max-width: 100% !important;
+    order: 2 !important;
+    margin-top: 20px !important;
+  }
 }
