@@ -89,7 +89,10 @@ body {
 .slideshow {
   width: 100%;
   max-width: 420px;
-  height: 460px;
+
+  /* 🔥 LET HEIGHT ADJUST TO IMAGES */
+  aspect-ratio: 3 / 4;   /* phone-like shape so tall pics fit */
+
   border-radius: 14px;
   overflow: hidden;
   position: relative;
@@ -99,23 +102,20 @@ body {
   background: rgba(255,255,255,0.05);
 }
 
-/* images: FULL FIT — no cropping */
+/* images: no cropping ever */
 .slides {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 
-  /* 🔥 FIX: show whole image on phone */
-  object-fit: contain;   /* instead of cover */
+  object-fit: contain;    /* full image */
   object-position: center;
-
   background-color: #0002;
 
   opacity: 0;
   transform: scale(1.03);
   transition: opacity 900ms ease, transform 900ms ease;
-  display: block;
 }
 .slides.active {
   opacity: 1;
@@ -124,10 +124,13 @@ body {
 
 /* responsive */
 @media (max-width: 880px) {
-  .wrap { grid-template-columns: 1fr; }
-  .slideshow { height: 300px; max-width: 100%; margin: 20px auto; }
-}
+  .slideshow {
+    max-width: 100%;
 
+    /* phone aspect ratio */
+    aspect-ratio: 3 / 5;
+  }
+}
 /* -------------------------
    Canvases (background effects)
    ------------------------- */
