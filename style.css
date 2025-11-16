@@ -12,15 +12,16 @@ body {
   -webkit-font-smoothing:antialiased;
 }
 
-/* center everything */
+/* center everything – SLIDESHOW AT BOTTOM */
 .wrap {
   max-width: 980px;
   margin: 40px auto;
   padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 360px;
+
+  display: flex;
+  flex-direction: column;   /* 🔥 Stack vertically → slideshow goes to bottom */
   gap: 30px;
-  align-items: start;
+  align-items: center;
 }
 
 /* card */
@@ -38,16 +39,10 @@ body {
   margin: 0 0 8px;
   font-size: 1.6rem;
   color: #fff;
-  text-shadow: 
-    0 0 14px rgba(255,255,255,0.9),
-    0 0 22px rgba(255,255,255,0.7);
+  text-shadow: 0 0 14px rgba(255,255,255,0.6);
 }
 
-.subtitle { 
-  margin: 0 0 18px; 
-  color: rgba(255,255,255,0.92);
-  text-shadow: 0 0 10px rgba(255,255,255,0.6);
-}
+.subtitle { margin: 0 0 18px; color: rgba(255,255,255,0.92); }
 
 /* button */
 .btn {
@@ -65,33 +60,34 @@ body {
 .btn:active { transform: translateY(1px); }
 .btn:hover { box-shadow: 0 10px 26px rgba(0,150,220,0.32); }
 
-/* secret message */
+/* secret message block (hidden until click) */
 .secret {
   margin-top: 18px;
   padding: 18px;
   border-radius: 10px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   color: #fff;
   white-space: pre-line;
   font-size: 1.05rem;
   line-height: 1.6;
   text-shadow:
-    0 0 7px rgba(255,255,255,1),
-    0 0 14px rgba(255,255,255,0.9),
-    0 0 22px rgba(255,255,255,0.65);
+    0 0 6px rgba(255,255,255,0.95),
+    0 0 14px rgba(255,255,255,0.7),
+    0 0 22px rgba(255,255,255,0.5);
 }
 
+/* hide */
 .hidden { display: none; }
 
 /* -------------------------
-   Slideshow (right column)
+   Slideshow (BOTTOM)
    ------------------------- */
 .slideshow {
   width: 100%;
   max-width: 420px;
 
   /* 🔥 LET HEIGHT ADJUST TO IMAGES */
-  aspect-ratio: 3 / 4;   /* phone-like shape so tall pics fit */
+  aspect-ratio: 3 / 4;   /* tall rectangle so pics fit */
 
   border-radius: 14px;
   overflow: hidden;
@@ -109,7 +105,7 @@ body {
   width: 100%;
   height: 100%;
 
-  object-fit: contain;    /* full image */
+  object-fit: contain;    /* ✨ shows whole image always */
   object-position: center;
   background-color: #0002;
 
@@ -127,12 +123,13 @@ body {
   .slideshow {
     max-width: 100%;
 
-    /* phone aspect ratio */
+    /* more vertical for phones */
     aspect-ratio: 3 / 5;
   }
 }
+
 /* -------------------------
-   Canvases (background effects)
+   Canvases (behind content)
    ------------------------- */
 #bgCanvas, #fireworks {
   position: fixed;
@@ -143,6 +140,7 @@ body {
   z-index: 1;
 }
 
+/* hearts container */
 #hearts {
   position: fixed;
   inset: 0;
@@ -173,7 +171,6 @@ body {
   border-radius: 50%;
   background: linear-gradient(180deg,#ff77a9,#ff4d7a);
 }
-
 @keyframes heartFloat {
   0% { transform: translate(-50%, 0) scale(1); opacity: 0; }
   10% { opacity: 1; }
