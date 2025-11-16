@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday Pookie 🎉</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BACKGROUND CANVASES (stars/sparkles + fireworks) -->
+  <canvas id="bgCanvas"></canvas>
+  <canvas id="fireworks"></canvas>
+
+  <!-- MAIN CONTENT -->
+  <main class="wrap">
+    <div class="card">
+      <h1>🎂 Happy Birthday, Pooks! 🎂</h1>
+      <p class="subtitle">Wishing you joy, laughter, and blessings always ❤</p>
+
+      <button id="secretBtn" class="btn">Click for Secret Wish 🎁</button>
+
+      <div id="secretMsg" class="secret hidden" aria-live="polite"></div>
+    </div>
+
+    <!-- SLIDESHOW (add more <img> lines to include more pictures) -->
+    <div class="slideshow" aria-hidden="false">
+      <img src="images/pic1.jpg" class="slides active" alt="pic1">
+      <img src="images/pic3.jpg" class="slides" alt="pic3">
+      <img src="images/pic4.jpg" class="slides" alt="pic4">
+       <img src="images/pic5.jpg" class="slides active" alt="pic5">
+      <img src="images/pic6.jpg" class="slides" alt="pic6">
+      <img src="images/pic7.jpg" class="slides" alt="pic7">
+       <img src="images/pic8.jpg" class="slides active" alt="pic8">
+      <img src="images/pic9.jpg" class="slides" alt="pic9">
+      <img src="images/pic10.jpg" class="slides" alt="pic10">
+       <img src="images/pic11.jpg" class="slides active" alt="pic11">
+      <img src="images/pic12.jpg" class="slides" alt="pic12">
+      <img src="images/pic13.jpg" class="slides" alt="pic13">
+       <img src="images/pic14.jpg" class="slides active" alt="pic14">
+      <img src="images/pic15.jpg" class="slides" alt="pic15">
+      <img src="images/pic16.jpg" class="slides" alt="pic16">
+       <img src="images/pic17.jpg" class="slides active" alt="pic17">
+      <img src="images/pic18.jpg" class="slides" alt="pic18">
+      <img src="images/pic19.jpg" class="slides" alt="pic19">
+      <!-- add more images here as needed -->
+    </div>
+  </main>
+
+  <!-- floating hearts container -->
+  <div id="hearts"></div>
+
+  <!-- local audio file (must exist at audio/birthday_song.mp3) -->
+  <audio id="birthdaySong" src="audio/birthday_song.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
